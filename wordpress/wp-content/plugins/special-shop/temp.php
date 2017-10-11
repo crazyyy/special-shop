@@ -1,55 +1,3 @@
-<?php
-/*
- * Plugin Name: Sandorik
- * Version: 2016.08.08
- * Description: Small widget plugin
- * Author: Vitalii Antoniuk
- * Author URI: #
- * Plugin URI: #
- * Text Domain: sandorik
- * Domain Path: /languages
- * License: GPLv3
- * License URI: http://www.gnu.org/licenses/gpl-3.0
-*/
-
-/** Theme Initialisation */
-add_action( 'admin_enqueue_scripts', 'sandorik_media_files' );
-function sandorik_media_files() {
-  wp_enqueue_media();
-}
-
-add_action('admin_menu', 'sandorik_options');
-function sandorik_options() {
-  add_menu_page( 'Sandorik', 'Sandorik', 'edit_posts', 'sandorik', 'sandorik_options_page', '', 24);
-}
-
-add_action( 'admin_enqueue_scripts', 'load_sandorik_admin_files' );
-function load_sandorik_admin_files() {
-  wp_register_style( 'sandorik_admin_styles', plugin_dir_url( __FILE__ ) . 'css/snd-admin.css', false, '1.0.0' );
-  wp_enqueue_style( 'sandorik_admin_styles' );
-
-  wp_register_script( 'jquery', plugin_dir_url( __FILE__ ) . 'js/jquery.js', false, '1.12.4' );
-  wp_enqueue_script( 'jquery' );
-
-  wp_register_script( 'sandorik_admin_scripts', plugin_dir_url( __FILE__ ) . 'js/snd-admin.js', false, '1.0.0' );
-  wp_enqueue_script( 'sandorik_admin_scripts' );
-}
-
-add_action('init', 'sandorik_frontend'); // Add Scripts to wp_head
-function sandorik_frontend() {
-  if (!is_admin()) {
-
-    wp_register_style( 'sandorik_front_styles', plugin_dir_url( __FILE__ ) . 'css/snd-front.css', false, '1.0.0' );
-    wp_enqueue_style( 'sandorik_front_styles' );
-
-    //  Load footer scripts (footer.php)
-    wp_register_script('sandorik_front_scripts', plugin_dir_url( __FILE__ ) . '/js/snd-front.js', array(), '1.0.0', true); // Custom scripts
-    wp_enqueue_script('sandorik_front_scripts'); // Enqueue it!
-  }
-}
-
-
-
 /** First Time Init */
 global $snd_db_version;
 $snd_db_version = "1.0";
@@ -60,7 +8,7 @@ function snd_install () {
   global $snd_db_version;
 
   $charset_collate = $wpdb->get_charset_collate();
-  $table_name = $wpdb->prefix . "sandorik";
+  $table_name = $wpdb->prefix . "specshop";
 
   if( $wpdb->get_var("show tables like '$table_name'") != $table_name) {
 
@@ -91,7 +39,7 @@ add_action( 'wp_ajax_nopriv_snd_form_add', 'snd_form_add' ); //for frontend
 function snd_form_add(){
   global $wpdb;
 
-  $table_name = $wpdb->prefix . "sandorik";
+  $table_name = $wpdb->prefix . "specshop";
 
   $post_name = $_POST['data']['name'];
   $post_url = $_POST['data']['url'];
@@ -127,7 +75,7 @@ add_action( 'wp_ajax_nopriv_snd_form_remove', 'snd_form_remove' ); //for fronten
 function snd_form_remove(){
   global $wpdb;
 
-  $table_name = $wpdb->prefix . "sandorik";
+  $table_name = $wpdb->prefix . "specshop";
 
   $post_id = $_POST['data']['id'];
 
@@ -154,7 +102,7 @@ add_action( 'wp_ajax_nopriv_snd_form_edit', 'snd_form_edit' ); //for frontend
 function snd_form_edit(){
   global $wpdb;
 
-  $table_name = $wpdb->prefix . "sandorik";
+  $table_name = $wpdb->prefix . "specshop";
 
   $post_id = $_POST['data']['id'];
 
@@ -173,7 +121,7 @@ add_action( 'wp_ajax_nopriv_snd_form_update', 'snd_form_update' ); //for fronten
 function snd_form_update(){
   global $wpdb;
 
-  $table_name = $wpdb->prefix . "sandorik";
+  $table_name = $wpdb->prefix . "specshop";
 
   $post_id = $_POST['data']['id'];
   $post_name = $_POST['data']['name'];
@@ -207,10 +155,10 @@ function snd_form_update(){
 }
 
 // Add Shortcode
-function sandorik_shortcode( $atts ) {
+function specshop_shortcode( $atts ) {
 
   global $wpdb;
-  $table_name = $wpdb->prefix . "sandorik";
+  $table_name = $wpdb->prefix . "specshop";
 
   // Attributes
   $atts = shortcode_atts(
@@ -234,7 +182,7 @@ function sandorik_shortcode( $atts ) {
       'a' => '',
     ),
     $atts,
-    'sandorik'
+    'specshop'
   );
   $ids = explode(",",$atts['id']);
   $counter = intval(count($ids));
@@ -272,9 +220,9 @@ function sandorik_shortcode( $atts ) {
     $bd = 'border: '. $atts['bd'] .'px solid transparent;';
   }
 
-  if ($atts['bdc']) {
-    $bdc = 'border-color: '. $atts['bdc'] .';';
-  }
+    if ($atts['bdc']) {
+      $bdc = 'border-color: '. $atts['bdc'] .';';
+    }
 
   if ($atts['pad']) {
     $pad = 'padding: '. $atts['bdc'] .'px;';
@@ -309,7 +257,7 @@ function sandorik_shortcode( $atts ) {
     ob_start();
 
 
-  echo '<!--noindex--><div class="sandorik-container" style="'. $mw .'">';
+  echo '<!--noindex--><div class="specshop-container" style="'. $mw .'">';
 
   if ( $columns == 0 ) {
 
@@ -346,10 +294,10 @@ function sandorik_shortcode( $atts ) {
       $block_styles = $width . $margin . $bgc . $bd . $bdc . $pad . $h;
 
       echo '
-        <a target="_blank" rel="nofollow" class="sandorik-item sandorik-item-one '. $results[0]->type .' sandorik-item-id-' . $ids[$i] . '" href="' . $results[0]->url . '" style="'. $block_styles . $href_styles .'">
+        <a target="_blank" rel="nofollow" class="specshop-item specshop-item-one '. $results[0]->type .' specshop-item-id-' . $ids[$i] . '" href="' . $results[0]->url . '" style="'. $block_styles . $href_styles .'">
           <img src="' . $results[0]->image . '" alt="" class="sandork-img" style="'. $img_styles .'">
           <span class="sandork-text">' . $results[0]->text . '</span>
-        </a><!-- /.sandorik-item -->';
+        </a><!-- /.specshop-item -->';
     };
 
   } else {
@@ -372,23 +320,23 @@ function sandorik_shortcode( $atts ) {
       $block_styles = $width . $bgc . $bd . $bdc . $pad . $h;
 
       echo '
-        <a target="_blank" rel="nofollow" class="sandorik-item  sandorik-item-two '. $results[0]->type .' sandorik-item-id-' . $ids[$i] . '" href="' . $results[0]->url . '" style="'. $block_styles . $href_styles .'">
+        <a target="_blank" rel="nofollow" class="specshop-item  specshop-item-two '. $results[0]->type .' specshop-item-id-' . $ids[$i] . '" href="' . $results[0]->url . '" style="'. $block_styles . $href_styles .'">
           <img src="' . $results[0]->image . '" alt="" class="sandork-img" style="'. $img_styles .'">
           <span class="sandork-text">' . $results[0]->text . '</span>
-        </a><!-- /.sandorik-item -->';
+        </a><!-- /.specshop-item -->';
     };
   }
 
-  echo '</div><!-- /.sandorik-container --><!--/noindex-->';
+  echo '</div><!-- /.specshop-container --><!--/noindex-->';
 
  $output = ob_get_clean();
  return $output;
 
 }
-add_shortcode( 'sandorik', 'sandorik_shortcode' );
+add_shortcode( 'specshop', 'specshop_shortcode' );
 
 
 
-function sandorik_options_page() {
-  include 'sandorik-options.php';
+function specshop_options_page() {
+  include 'specshop-options.php';
 }
