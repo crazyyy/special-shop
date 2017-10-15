@@ -1,9 +1,10 @@
+<?
 // Add Reviews Post Type
 add_action( 'init', 'post_type_review' );
 function post_type_review() {
   $labels = array(
-    'name'=> 'Отзыв',
-    'singular_name' => 'Отзывы',
+    'name'=> 'Отзывы',
+    'singular_name' => 'Отзыв',
     'add_new' => 'Добавить',
     'add_new_item' => 'Добавить',
     'edit' => 'Редактировать',
@@ -22,9 +23,9 @@ function post_type_review() {
     'public' => true,
     'exclude_from_search' => true,
     'show_ui' => true,
-    'menu_position' => 16,
+    'menu_position' => 17,
     // https://developer.wordpress.org/resource/dashicons/
-    'menu_icon' => 'dashicons-thumbs-up',
+    'menu_icon' => 'dashicons-star-half',
     'capability_type' => 'post',
     'hierarchical' => false,
     'supports' => array('title','editor','thumbnail'),
@@ -33,3 +34,5 @@ function post_type_review() {
   );
   register_post_type( 'reviews' , $args );
 }
+
+?>

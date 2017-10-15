@@ -1,3 +1,5 @@
+
+<?php
 /** First Time Init */
 global $snd_db_version;
 $snd_db_version = "1.0";
@@ -340,3 +342,4 @@ add_shortcode( 'specshop', 'specshop_shortcode' );
 function specshop_options_page() {
   include 'specshop-options.php';
 }
+?>

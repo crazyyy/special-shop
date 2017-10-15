@@ -52,4 +52,37 @@ function specshop_frontend()
   }
 }
 
+require 'acf/acf.php';
+
+require 'modules/products.php';
+require 'modules/payments.php';
+require 'modules/regions.php';
+
 require 'modules/reviews.php';
+
+
+// clear the permalinks after the post type has been registered
+function specshop_plugin_install()
+{
+    flush_rewrite_rules();
+}
+register_activation_hook( __FILE__, 'specshop_plugin_install' );
+
+
+
+
+add_filter('the_content', 'specshop_products_content');
+
+function specshop_products_content( $content ) {
+  if ( is_singular( 'products' ) ) {
+    include dirname( __FILE__ ) . '/content/products.php';
+  } else {
+    return $content;
+  }
+}
+
+
+
+
+
+?>
