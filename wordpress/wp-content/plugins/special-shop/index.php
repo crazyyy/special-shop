@@ -15,6 +15,7 @@
 require 'modules/loadassets.php';
 
 require 'acf/acf.php';
+add_filter('acf/settings/show_admin', '__return_false');
 
 require 'modules/products.php';
 require 'modules/payments.php';
@@ -67,9 +68,6 @@ function specshop_insert_page(){
 
 }
 
-
-
-
 // replace the_content on product single pages
 add_filter('the_content', 'specshop_products_content');
 function specshop_products_content( $content )
@@ -86,11 +84,37 @@ add_filter('pre_get_posts', 'specshop_products_loop');
 function specshop_products_loop( $query )
 {
   if ( is_tax( 'district' ) ) {
-       $query->set('post_type', array( 'products' ) );
-       $query->set( 'posts_per_page', 50 );
+    $query->set( 'post_type', array( 'products' ) );
+    $query->set( 'posts_per_page', 50 );
   }
 }
 
+// replace the_content on reviews page
+add_filter('the_content', 'specshop_reviews_loop_content');
+function specshop_reviews_loop_content( $content )
+{
+  if ( is_page( 'reviews' ) ) {
+    include dirname( __FILE__ ) . '/content/page-reviews.php';
+  }
+}
+
+// replace the_content on check payment page
+add_filter('the_content', 'specshop_pagecheck_content');
+function specshop_pagecheck_content( $content )
+{
+  if ( is_page( 'check' ) ) {
+    include dirname( __FILE__ ) . '/content/page-check.php';
+  }
+}
+
+// replace the_content on product list page
+add_filter('the_content', 'specshop_productlist_content');
+function specshop_productlist_content( $content )
+{
+  if ( is_page( 'products' ) ) {
+    include dirname( __FILE__ ) . '/content/page-productlist.php';
+  }
+}
 
 
 

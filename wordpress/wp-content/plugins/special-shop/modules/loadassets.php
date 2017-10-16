@@ -16,13 +16,13 @@
   add_action('admin_enqueue_scripts', 'load_specshop_admin_files');
   function load_specshop_admin_files()
   {
-    wp_register_style('specshop_admin_styles', plugin_dir_url(__FILE__) . 'css/special-shop-admin.css', false, '1.0.0');
+    wp_register_style('specshop_admin_styles', plugin_dir_url(__FILE__) . '../css/special-shop-admin.css', false, '1.0.0');
     wp_enqueue_style('specshop_admin_styles');
 
     wp_register_script('jquery', plugin_dir_url(__FILE__) . 'js/jquery.js', false, '1.12.4');
     wp_enqueue_script('jquery');
 
-    wp_register_script('specshop_admin_scripts', plugin_dir_url(__FILE__) . 'js/special-shop-admin.js', false, '1.0.0');
+    wp_register_script('specshop_admin_scripts', plugin_dir_url(__FILE__) . '../js/special-shop-admin.js', false, '1.0.0');
     wp_enqueue_script('specshop_admin_scripts');
   }
 
@@ -31,11 +31,11 @@
   {
     if (!is_admin()) {
 
-      wp_register_style('specshop_front_styles', plugin_dir_url(__FILE__) . 'css/special-shop-main.css', false, '1.0.0');
+      wp_register_style('specshop_front_styles', plugin_dir_url(__FILE__) . '../css/special-shop-main.css', false, '1.0.0');
       wp_enqueue_style('specshop_front_styles');
 
       //  Load footer scripts (footer.php)
-      wp_register_script('specshop_front_scripts', plugin_dir_url(__FILE__) . '/js/special-shop-scripts.js', array(), '1.0.0', true); // Custom scripts
+      wp_register_script('specshop_front_scripts', plugin_dir_url(__FILE__) . '../js/special-shop-scripts.js', array(), '1.0.0', true); // Custom scripts
       wp_enqueue_script('specshop_front_scripts'); // Enqueue it!
     }
   }
