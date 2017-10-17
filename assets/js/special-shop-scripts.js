@@ -21,3 +21,27 @@ if (typeof jQuery === 'undefined') {
   console.log('jQuery has loaded');
 }
 // Place any jQuery/helper plugins in here.
+var $ = jQuery;
+$(document).ready(function() {
+  // set default preference for AJAX
+  var data = {
+    'url': '/wp-admin/admin-ajax.php'
+  };
+
+  // ajax load price and product count from ACF field for taxonomy archive page
+  $('.product-container--item').each(function(index, el) {
+    var thisId = $(this).attr('id').replace('post-', '');
+
+    data.postid = thisId;
+    data.action = 'load_acf_fields';
+
+    var $thisObject = $(this)
+    $.post(data.url, data, function(response) {
+      var data = JSON.parse(response);
+      $thisObject.find('.product-container--price').prepend(data.price)
+      $thisObject.find('.product-container--count span').prepend(data.count)
+    });
+  });
+
+
+});

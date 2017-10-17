@@ -16,7 +16,7 @@ require 'modules/loadassets.php';
 
 // include ACF and hide it from admin area
 require 'acf/acf.php';
-add_filter('acf/settings/show_admin', '__return_false');
+// add_filter('acf/settings/show_admin', '__return_false');
 
 require 'modules/products.php';
 require 'modules/payments.php';
@@ -24,7 +24,7 @@ require 'modules/regions.php';
 
 require 'modules/reviews.php';
 
-
+require 'ajax.php';
 
 // clear the permalinks after the post type has been registered
 register_activation_hook( __FILE__, 'specshop_plugin_install' );
@@ -116,6 +116,8 @@ function specshop_productlist_content( $content )
     include dirname( __FILE__ ) . '/content/page-productlist.php';
   }
 }
+
+
 
 
 
