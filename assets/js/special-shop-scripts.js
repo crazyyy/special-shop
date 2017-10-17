@@ -32,16 +32,32 @@ $(document).ready(function() {
   $('.product-container--item').each(function(index, el) {
     var thisId = $(this).attr('id').replace('post-', '');
 
-    data.postid = thisId;
     data.action = 'load_acf_fields';
+    data.postid = thisId;
 
     var $thisObject = $(this)
     $.post(data.url, data, function(response) {
-      var data = JSON.parse(response);
-      $thisObject.find('.product-container--price').prepend(data.price)
-      $thisObject.find('.product-container--count span').prepend(data.count)
+      var res = JSON.parse(response);
+      $thisObject.find('.product-container--price').prepend(res.price)
+      $thisObject.find('.product-container--count span').prepend(res.count)
     });
   });
+
+  $('.check-form--btn').on('click', function(e){
+    e.preventDefault();
+
+    data.action = 'check_payment';
+    data.orderNubmer = $('#order-number').val();
+    data.orderComment = $('#order-comment').val();
+
+    $.post(data.url, data, function(response) {
+      // var res = JSON.parse(response);
+      console.log(response)
+      $('.check-status').html(response);
+    });
+
+
+  })
 
 
 });
