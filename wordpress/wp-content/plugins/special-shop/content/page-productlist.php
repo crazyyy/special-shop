@@ -1,6 +1,5 @@
 <?php
 
-
   echo '<div class="productlist-container">';
 
     $temp = $wp_query;
