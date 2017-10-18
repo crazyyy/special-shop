@@ -122,11 +122,12 @@
     $result_payments = json_decode($result_payments);
     $array_result_of_payments = $result_payments -> data;
 
+    // 71041214432
     // search in last successful payments element with queried payment code
     $succeful_payments = array_filter(
       $array_result_of_payments,
       function ($element) {
-        preg_match('/71041214432/' , $element->comment, $output_array);
+        preg_match("/$order_comment/" , $element->comment, $output_array);
         switch ( count($output_array) > 0 ) {
           case TRUE:
           $array_good[] = $element;
