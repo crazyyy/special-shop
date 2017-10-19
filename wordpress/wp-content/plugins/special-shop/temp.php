@@ -337,9 +337,87 @@ function specshop_shortcode( $atts ) {
 }
 add_shortcode( 'specshop', 'specshop_shortcode' );
 
-
+echo '<pre>';
+var_dump($wallet);
+echo '</pre>';
 
 function specshop_options_page() {
   include 'specshop-options.php';
 }
 ?>
+
+
+
+
+<?php
+  $rows = get_field('products');
+
+  echo '<pre>';
+  var_dump($rows);
+  echo '</pre>';
+
+  echo get_the_id();
+
+  $first_element = false;
+  $price = 0;
+  $count = 0;
+
+  $rows = get_field('products');
+  if ($rows) { foreach($rows as $row) {
+    $count =+ 1;
+
+  }}
+  // check all products in current product page
+  if ($rows) { foreach($rows as $row) {
+    // get only firs ACTIVE product
+    if ($first_element == false ) {
+      // end check if this product has a label ACTIVE
+        if ( $row['product_status']['value'] == 'active') {
+          // after use first active element - close the loop
+          $first_element = true;
+          // get the wallet bumber from ACF field
+          $wallet = $row['product_wallet'][0];
+
+          $price = $row['product_price'];
+
+
+
+        } else { /* no more ACTIVE elements */ }
+    } else { /* first element on screen or nothing to show */ }
+  }}
+
+?>
+
+
+
+<?php
+  echo '!!!!!!';
+  // check if the repeater field has rows of data
+  if( have_rows('products') ):
+  echo '!!!!!!';
+    // loop through the rows of data
+      while ( have_rows('products') ) : the_row();
+          // display a sub field value
+          the_sub_field('product_price');
+      endwhile;
+  endif;
+?>
+
+
+
+<?php the_field('testfield'); ?>
+
+
+<?php
+  echo '99999';
+  // check if the repeater field has rows of data
+  if( have_rows('testfield') ):
+  echo '88888';
+    // loop through the rows of data
+      while ( have_rows('testfield') ) : the_row();
+          // display a sub field value
+          the_sub_field('test_1');
+      endwhile;
+  endif;
+?>
+
