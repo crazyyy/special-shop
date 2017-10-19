@@ -1,0 +1,12 @@
+.articles .attachment { -ms-word-wrap: break-word; }
+.sli-links .control-slide{
+	*position:relative;
+	*text-indent:0;
+	*display: inline;
+	*padding-top:10px;
+	*height: 0;
+}
+img {
+	width:auto;
+	height:auto;
+}

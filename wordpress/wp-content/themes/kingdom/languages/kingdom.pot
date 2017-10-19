@@ -1,0 +1,150 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Kingdom\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-05-06 15:08+0300\n"
+"Last-Translator: bestwebsoft.com <support@bestwebsoft.com>\n"
+"Language-Team: bestwebsoft.com <wp_theme@bestwebsoft.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.4\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:11 archive.php:51 index.php:50 search.php:48
+msgid "Nothing Found"
+msgstr ""
+
+#: 404.php:17
+msgid "This is somewhat embarrassing, isn&rsquo;t it?"
+msgstr ""
+
+#: 404.php:20
+msgid "It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help."
+msgstr ""
+
+#: archive.php:33 index.php:28 search.php:30
+msgid "[Top]"
+msgstr ""
+
+#: archive.php:42 index.php:41 search.php:39
+msgid "&larr; Older Posts"
+msgstr ""
+
+#: archive.php:43 index.php:42 search.php:40
+msgid "Newer Posts &rarr;"
+msgstr ""
+
+#: archive.php:54 index.php:53 search.php:51
+msgid "Apologies, but no results were found. Perhaps searching will help find a related post."
+msgstr ""
+
+#: comments.php:13
+msgid "Comments"
+msgstr ""
+
+#: comments.php:21
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:22
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:28
+msgid "Comments are closed."
+msgstr ""
+
+#: content-aside.php:11 content-image.php:14 content.php:10
+#, php-format
+msgid "Permalink to %s"
+msgstr ""
+
+#: content-aside.php:15 content-image.php:7 content-link.php:8
+#: content-quote.php:7 content-status.php:24
+msgid "Continue reading"
+msgstr ""
+
+#: content-aside.php:20 content-image.php:18 content-link.php:11
+#: content-quote.php:11 content.php:15
+msgid "Posted on"
+msgstr ""
+
+#: content-aside.php:28 content-image.php:26 content-link.php:19
+#: content.php:23
+msgid "in"
+msgstr ""
+
+#: content-link.php:6
+msgid "Link"
+msgstr ""
+
+#: content-status.php:15 content-status.php:18 functions.php:245
+msgid "at"
+msgstr ""
+
+#: content.php:32
+msgid "&larr; Previous"
+msgstr ""
+
+#: content.php:33
+msgid "Next &rarr;"
+msgstr ""
+
+#: content.php:73
+msgid "[Back to the Gallery]"
+msgstr ""
+
+#: footer.php:15
+msgid "Powered by"
+msgstr ""
+
+#: footer.php:17
+msgid "and"
+msgstr ""
+
+#: functions.php:41
+msgid "Primary Menu"
+msgstr ""
+
+#: functions.php:68
+msgid "Primary Widget Area"
+msgstr ""
+
+#: functions.php:70
+msgid "The primary widget area"
+msgstr ""
+
+#: functions.php:228
+msgid "Pingback"
+msgstr ""
+
+#: functions.php:228 functions.php:245
+msgid "[Edit]"
+msgstr ""
+
+#: functions.php:238
+msgid "says"
+msgstr ""
+
+#: functions.php:241
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: functions.php:359
+msgid " Check if you want featured image of this post to be shown in the slider. You can add text description as well."
+msgstr ""
+
+#: search.php:13
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#: searchform.php:7
+msgid "Enter search keyword"
+msgstr ""

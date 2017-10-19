@@ -4,7 +4,7 @@
 }
 
 .product-container {
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   line-height: 3;
   .product-container--headline {
@@ -12,6 +12,10 @@
     .product-container--title {
       display: inline-block;
       @extend .ss-bold;
+      a {
+        text-decoration: none;
+        border-bottom: 0 !important;
+      }
     }
   }
   .product-container--price {
@@ -71,21 +75,84 @@
 
 .productnav {
   list-style: none;
-  display: block;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: stretch;
+  align-items: flex-start;
   padding: 0;
   li {
     display: inline-block;
     a {
       display: block;
       padding: 10px;
+      margin: 0 5px 10px;
       color: #fff;
       background-color: red;
       border-radius: 8px;
-    }
-    &:hover {
       a {
         background-color: orange;
       }
     }
+    .productnav--childnav {
+      display: inline-block;
+    }
+  }
+}
+.productlist-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: center;
+  align-items: baseline;
+  article {
+    border: 1px solid black;
+    width: 24%;
+    padding: 10px 0;
+    font-size: 24px;
+    border-radius: 10px;
+    text-align: center;
+    display: block;
+    .product-container--title {
+      a {
+        text-decoration: none;
+        border-bottom: 0 !important;
+      }
+    }
+    .product-container--price,
+    .product-container--count {
+      display: block;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .product-container--price {
+      font-size: 140%;
+    }
+    .product-container--count {
+      font-size: 80%;
+    }
+    .product-container--buy {
+      margin: 0 auto;
+      display: block;
+      border-radius: 10px;
+      text-transform: uppercase;
+      font-size: 90%;
+      width: 80%;
+      color: #fff;
+      &:hover {
+        background-color: orangered;
+      }
+      background-color: red;
+    }
+  }
+}
+
+.check-status {
+  line-height: 1.2;
+  .product-descr {
+    margin-bottom: 16px;
   }
 }

@@ -1,0 +1,73 @@
+#slider-wrap{ /* Wrapper slider and buttons */
+	width:100%;
+	height:336px;
+	margin:0 0 59px;
+	background-color:#21262b;
+}
+#slider{ /* Wrapper Slider */
+	width:100%;
+	height:100%;
+	overflow: hidden;
+	position:relative;
+}
+.slide{ /* Slide */
+	width:100%;
+	height:100%;
+}
+.slide .twttr_button{
+	display:none;
+}
+.slide a{
+	position:absolute;
+	display:block;
+	z-index: 3;
+	cursor:pointer;
+	height:100%;
+	width: 100%;
+	background-image:url(data:image/jpeg;);
+}
+.slide img{
+	position:absolute;
+	z-index: 1;
+}
+.sli-links{ /* Buttons for change img */
+	top:-47px;
+	text-align:center;
+	position:relative;
+	z-index:4;
+}
+.sli-links .control-slide{
+	margin:0 5px;
+	display:inline-block;
+	width:10px;
+	height:10px;
+	overflow:hidden;
+	text-indent:-9999px;
+	background:url("../images/slider_inactive.png") center top no-repeat;
+	cursor:pointer;
+}
+.sli-links .control-slide.active{
+	background:url("../images/slider_current.png") center top no-repeat;}
+
+/* Slider text */
+.slider_text {
+	position:relative;
+	top: 65px;
+	margin: 0 120px;
+	height:200px;
+	text-align: center;
+	overflow:hidden;
+	z-index: 2;
+}
+.slider_text * {
+	color: #C8C9C7;
+	font: 14px "Open Sans",sans-serif;
+	letter-spacing: 0.15px;
+	line-height:1.46;
+}
+.slider_text h1 {
+	color: #FFFFFF;
+	font: italic 33.5px Cuprum;
+	letter-spacing: 0.25px;
+	margin: 0 0 17px;
+}

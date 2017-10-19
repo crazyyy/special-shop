@@ -1,0 +1,12 @@
+.articles .attachment { -ms-word-wrap: break-word; }
+.sli-links .control-slide{
+	position:relative;
+	text-indent:0;
+	display: inline;
+	padding-top:10px;
+	height: 0;
+}
+.gallery-icon { margin-left:4px !important; }
+.gallery .gallery-icon img { border-width:0px !important; }
+.jq-selectbox.jqselect div { max-width:none; }
+.jq-selectbox.jqselect { width:240px; }

@@ -1,30 +1,32 @@
 <?php
 
   // list top level product districts with link to a child
-  $wcatTerms = get_terms('district', array('hide_empty' => 0, 'parent' =>0));
-  foreach($wcatTerms as $wcatTerm) :
-    echo '
-      <ul class="productnav">
-        <li class="productnav--item">
-          <a href="'. get_term_link( $wcatTerm->slug, $wcatTerm->taxonomy ) .'">'. $wcatTerm->name .'</a>
-          <ul class="productnav--childnav">';
-            $wsubargs = array(
-              'hierarchical' => 1,
-              'show_option_none' => '',
-              'hide_empty' => 0,
-              'parent' => $wcatTerm->term_id,
-              'taxonomy' => 'district'
-            );
-            $wsubcats = get_categories($wsubargs);
-            foreach ($wsubcats as $wsc):
-              echo '<li><a href="'. get_term_link( $wsc->slug, $wsc->taxonomy ) .'">'. $wsc->name .'</a></li>';
-            endforeach;
-          echo '
-          </ul>
-        </li>
-      </ul>
-    ';
-  endforeach;
+  echo '<ul class="productnav">';
+    $wcatTerms = get_terms('district', array('hide_empty' => 0, 'parent' =>0));
+    foreach($wcatTerms as $wcatTerm) :
+      echo '
+
+          <li class="productnav--item">
+            <a href="'. get_term_link( $wcatTerm->slug, $wcatTerm->taxonomy ) .'">'. $wcatTerm->name .'</a>
+            <ul class="productnav--childnav">';
+              $wsubargs = array(
+                'hierarchical' => 1,
+                'show_option_none' => '',
+                'hide_empty' => 0,
+                'parent' => $wcatTerm->term_id,
+                'taxonomy' => 'district'
+              );
+              $wsubcats = get_categories($wsubargs);
+              foreach ($wsubcats as $wsc):
+                echo '<li><a href="'. get_term_link( $wsc->slug, $wsc->taxonomy ) .'">'. $wsc->name .'</a></li>';
+              endforeach;
+            echo '
+            </ul>
+          </li>
+
+      ';
+    endforeach;
+  echo '</ul>';
 
   // list products
   echo '<div class="productlist-container">';
@@ -54,11 +56,11 @@
       }}
 
       echo '
-        <article id="post-'. get_the_ID() .' class="productlist-container--item">
+        <article id="post-'. get_the_ID() .'" class="productlist-container--item">
           <h2 class="product-container--title"><a href="'. get_the_permalink() .'">' . get_the_title()  .'</a></h2>
           <span class="product-container--price">'. $price .'р.</span>
           <span class="product-container--count">В наличии: <span>'. $count .'</span></span>
-          <a href="'. get_the_permalink() .'>" class="product-container--buy">Купить</a>
+          <a href="'. get_the_permalink() .'" class="product-container--buy">Купить</a>
         </article>
       ';
 

@@ -1,1 +1,0 @@
-D:/Works/Verstka/special-shop/wordpress/wp-content/plugins/query-monitor/wp-content/db.php

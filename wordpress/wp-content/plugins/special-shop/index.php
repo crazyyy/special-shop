@@ -117,10 +117,4 @@ function specshop_productlist_content( $content )
   }
 }
 
-
-
-
-
-
-
 ?>

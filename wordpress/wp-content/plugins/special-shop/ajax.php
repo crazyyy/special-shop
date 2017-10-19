@@ -39,8 +39,8 @@
   function check_payment (){
     global $wpdb;
 
-    $order_nubmer =  $_POST['orderNubmer'] ;
-    $order_comment =  $_POST['orderComment'] ;
+    $order_nubmer =  $_POST['orderNubmer'];
+    $order_comment =  $_POST['orderComment'];
 
     // remove this
     $obj = (object) [
@@ -142,7 +142,7 @@
 
     // check if we have one+ payments with code
     if ( count($succeful_payments) == 0 ) {
-      echo 'no payments';
+      echo 'Нет подходящих платежей';
       wp_die();
     }
 
@@ -162,7 +162,7 @@
 
     // check if we have
     if ( count($succeful_payments) == 0 ) {
-      echo 'amount of payment is less than product price';
+      echo 'Искомая сумма не найдена или меньше необходимого, обратитесьв поддержку';
       wp_die();
     }
 
@@ -181,8 +181,8 @@
 
     $my_post = get_post($order_nubmer);
     // echo $my_post->post_title;
-    echo '<div class="product-descr">'. htmlspecialchars_decode($my_post -> post_content) .'</div>';
-    echo '<div class="product-placed">'. $product_place .'</div>';
+    echo '<div class="product-descr"><h6>Описание продукта:</h6>'. htmlspecialchars_decode($my_post -> post_content) .'</div>';
+    echo '<div class="product-placed"><h6>Место хранения:</h6>'. $product_place .'</div>';
 
     wp_die();
   }

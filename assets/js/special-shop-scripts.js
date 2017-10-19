@@ -27,25 +27,25 @@ $(document).ready(function() {
   var data = {
     'url': '/wp-admin/admin-ajax.php'
   };
-
   // ajax load price and product count from ACF field for taxonomy archive page
   $('.product-container--item').each(function(index, el) {
     var thisId = $(this).attr('id').replace('post-', '');
+
 
     data.action = 'load_acf_fields';
     data.postid = thisId;
 
     var $thisObject = $(this)
     $.post(data.url, data, function(response) {
+      console.log(response)
       var res = JSON.parse(response);
-      $thisObject.find('.product-container--price').prepend(res.price)
-      $thisObject.find('.product-container--count span').prepend(res.count)
+      $thisObject.find('.product-container--price').html(res.price)
+      $thisObject.find('.product-container--count span').html(res.count)
     });
   });
 
   $('.check-form--btn').on('click', function(e){
     e.preventDefault();
-
     data.action = 'check_payment';
     data.orderNubmer = $('#order-number').val();
     data.orderComment = $('#order-comment').val();
